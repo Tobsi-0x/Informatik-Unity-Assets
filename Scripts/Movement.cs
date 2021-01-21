@@ -23,12 +23,9 @@ public class Movement : MonoBehaviour
     public string RightTile;
     private string TileEndName = " (UnityEngine.Sprite)";
     private string[] bannedTiles = new string[] { "colored_packed_48", "colored_packed_768", "colored_packed_769", "colored_packed_770", "colored_packed_816", "colored_packed_818", "colored_packed_864", "colored_packed_865", "colored_packed_866", "null (UnityEngine.Sprite)" };
-    //public List<string> bannedTiles = new List<string>();
-    //public GameObject go = GameObject.Find("Enemy_");
     
     public GameObject[] EnemyObj;
     public GameObject obj;
-    //public Enemy EnemyScript; 
 
     // Start is called before the first frame update
     void Start()
@@ -43,11 +40,14 @@ public class Movement : MonoBehaviour
 
     }
 
+    // FixedUpdate is called 60 times per second
     private void FixedUpdate()
     {
         movementTimer -= Time.fixedDeltaTime;
         //RightTile = GetSpriteData(RightTile);
         //MovementTimer(RightTile);
+
+        // NOTE: Når du kommer til Menu og det, disable dette script når spilleren er i menuer, og enable det igen når man går ud af menuen.
         if (Input.GetKey(KeyCode.UpArrow))
         {
             // Fjern ALT undtagen UpMovement();
@@ -172,12 +172,8 @@ public class Movement : MonoBehaviour
                 
                 foreach(GameObject enemyGO in EnemyObj)
                 {
-                    enemyGO.GetComponent<Enemy>().EnemyMoveSelf();
+                    enemyGO.GetComponent<Enemy>().EnemyMoveSelf(); // FPS Impact, med omkring 14 fjender der bevæger sig samtidigt, så tager det ca 6,25% af den samlede FPS man kan have.
                 }
-
-                /*EnemyObj = GameObject.FindGameObjectsWithTag("EnemyTag");
-                Debug.Log(EnemyObj);
-                EnemyScript.EnemyMove(EnemyObj);*/
             }
         }
     }

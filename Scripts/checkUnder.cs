@@ -16,13 +16,13 @@ public class checkUnder : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
 
         /*Vector3Int lPos = grid.WorldToCell(player.transform.position);
         Debug.Log("name : " + tilemap.GetTile(lPos).name + " & position : " + lPos);*/
 
-        Vector3Int coordinate = grid.WorldToCell(transform.position);
+        /*Vector3Int coordinate = grid.WorldToCell(transform.position);
         Debug.Log(tilemap.GetSprite(coordinate));
 
         string tileName = tilemap.GetSprite(coordinate).ToString();
@@ -38,5 +38,5 @@ public class checkUnder : MonoBehaviour
         string tileName = tilemap.GetSprite(coordinate).ToString();
 
         return tileName;
-    }
+    }*/
 }
