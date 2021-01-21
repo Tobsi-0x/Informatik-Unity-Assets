@@ -18,6 +18,9 @@ public class ItemBaseEditor : Editor
             itemB.GetLatestItemInCatagory();
         }
 
+        GUILayout.Label("===============================");
+        GUILayout.Label("===============================");
+
         itemB.genType = (ItemBase.GeneratorType)EditorGUILayout.EnumPopup("Generate: ", itemB.genType);
 
         if (itemB.genType == ItemBase.GeneratorType.WEAPON)
@@ -224,6 +227,14 @@ public class ItemBaseEditor : Editor
         {
             itemB.MakeLvLOneWeapon();
             Debug.Log("T");
+        }
+
+        GUILayout.Label("===============================");
+        GUILayout.Label("===============================");
+
+        if (GUILayout.Button("Manual Item Overwrite"))
+        {
+            itemB.ManualItemOverwrite();
         }
 
     }
