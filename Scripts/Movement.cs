@@ -24,6 +24,11 @@ public class Movement : MonoBehaviour
     private string TileEndName = " (UnityEngine.Sprite)";
     private string[] bannedTiles = new string[] { "colored_packed_48", "colored_packed_768", "colored_packed_769", "colored_packed_770", "colored_packed_816", "colored_packed_818", "colored_packed_864", "colored_packed_865", "colored_packed_866", "null (UnityEngine.Sprite)" };
     //public List<string> bannedTiles = new List<string>();
+    //public GameObject go = GameObject.Find("Enemy_");
+    
+    public GameObject[] EnemyObj;
+    public GameObject obj;
+    //public Enemy EnemyScript; 
 
     // Start is called before the first frame update
     void Start()
@@ -162,6 +167,17 @@ public class Movement : MonoBehaviour
             {
                 transform.position += new Vector3(-1, 0, 0);
                 movementTimer = movementInterval;
+
+                EnemyObj = GameObject.FindGameObjectsWithTag("EnemyTag");
+                
+                foreach(GameObject enemyGO in EnemyObj)
+                {
+                    enemyGO.GetComponent<Enemy>().EnemyMoveSelf();
+                }
+
+                /*EnemyObj = GameObject.FindGameObjectsWithTag("EnemyTag");
+                Debug.Log(EnemyObj);
+                EnemyScript.EnemyMove(EnemyObj);*/
             }
         }
     }
